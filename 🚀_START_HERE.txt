@@ -1,0 +1,73 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║     HAIR & SCALP DISEASE PREDICTION SYSTEM                   ║
+║     Quick Start Instructions                                 ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+
+🎯 TO RUN THE APPLICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   👉 Double-click: START_APPLICATION.bat
+   
+   That's it! The application will:
+   ✅ Check Python installation
+   ✅ Install dependencies automatically
+   ✅ Launch the server
+   ✅ Open your browser
+   
+   ⏱️ First run takes 2-3 minutes
+   ⚡ Subsequent runs take 10 seconds
+
+
+🔨 TO BUILD STANDALONE EXECUTABLE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   👉 Double-click: BUILD_EXECUTABLE.bat
+   
+   Wait 5-10 minutes, then find your .exe in:
+   📁 dist\HairScalpDiseasePredictor\HairScalpDiseasePredictor.exe
+   
+   Share the entire folder with others!
+   No Python needed on their computers! 🎉
+
+
+📚 NEED HELP?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   📖 Read: COMPLETE_GUIDE.md (Everything you need to know)
+   🔧 Read: TROUBLESHOOTING_GUIDE.md (Fix common issues)
+   📦 Read: EXECUTABLE_README.md (Executable details)
+
+
+⚙️ SYSTEM REQUIREMENTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   • Windows 7/8/10/11
+   • Python 3.8+ (for START_APPLICATION.bat)
+   • 4GB RAM minimum
+   • 2GB free disk space
+
+
+🎮 HOW TO USE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   1. Run START_APPLICATION.bat
+   2. Register/Login
+   3. Upload scalp image
+   4. Get AI diagnosis
+   5. Download PDF report
+
+
+⚠️ IMPORTANT NOTES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   • Keep console window OPEN while using the app
+   • Press Ctrl+C to stop the server
+   • First prediction takes longer (model loading)
+   • All data stays on your computer (private & secure)
+
+
+🎉 ENJOY YOUR AI-POWERED MEDICAL DIAGNOSIS SYSTEM!
+

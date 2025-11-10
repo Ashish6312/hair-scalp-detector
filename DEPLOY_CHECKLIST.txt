@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════════╗
+║          🚀 DEPLOYMENT CHECKLIST - RENDER                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+📋 PRE-DEPLOYMENT
+═══════════════════════════════════════════════════════════════
+□ Code is working locally
+□ All tests pass
+□ requirements_production.txt is up to date
+□ settings_production.py is configured
+□ .gitignore includes sensitive files (db.sqlite3, *.pyc, __pycache__)
+
+📦 GITHUB SETUP
+═══════════════════════════════════════════════════════════════
+□ Create GitHub repository
+□ Initialize git in project folder:
+  cd required_files
+  git init
+  git add .
+  git commit -m "Initial commit"
+  git branch -M main
+  git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+  git push -u origin main
+
+🌐 RENDER SETUP
+═══════════════════════════════════════════════════════════════
+□ Sign up at render.com
+□ Click "New +" → "Web Service"
+□ Connect GitHub repository
+□ Configure service:
+  - Name: hair-scalp-detector
+  - Region: (Choose closest)
+  - Branch: main
+  - Runtime: Python 3
+  
+□ Build Command:
+  pip install -r requirements_production.txt && cd minor && python manage.py collectstatic --no-input && python manage.py migrate
+
+□ Start Command:
+  cd minor && gunicorn minor.wsgi:application
+
+□ Add Environment Variables:
+  PYTHON_VERSION = 3.11.0
+  SECRET_KEY = (Generate random string)
+  DJANGO_SETTINGS_MODULE = minor.settings_production
+  ALLOWED_HOSTS = .onrender.com
+
+□ (Optional) Add PostgreSQL Database:
+  - Create new PostgreSQL database
+  - Copy Internal Database URL
+  - Add DATABASE_URL environment variable
+
+□ Click "Create Web Service"
+
+⏳ DEPLOYMENT
+═══════════════════════════════════════════════════════════════
+□ Wait for build to complete (5-10 minutes)
+□ Check logs for errors
+□ Note your app URL: https://your-app-name.onrender.com
+
+🔧 POST-DEPLOYMENT
+═══════════════════════════════════════════════════════════════
+□ Update settings_production.py with actual Render URL
+□ Test all features:
+  □ Home page loads
+  □ User registration works
+  □ Login/logout works
+  □ Image upload works
+  □ Camera capture works
+  □ Prediction works
+  □ Results page displays correctly
+  □ Static files load (CSS, JS, images)
+
+□ Verify security:
+  □ HTTPS is enabled
+  □ DEBUG = False
+  □ SECRET_KEY is secure
+  □ ALLOWED_HOSTS is configured
+
+🎉 LAUNCH
+═══════════════════════════════════════════════════════════════
+□ App is live and working
+□ Share URL with users
+□ Monitor logs for issues
+□ Set up monitoring/alerts
+
+═══════════════════════════════════════════════════════════════
+Your app will be live at: https://your-app-name.onrender.com
+═══════════════════════════════════════════════════════════════
+
+💡 TIPS:
+- Free tier spins down after 15 min inactivity (first load may be slow)
+- Upgrade to paid tier ($7/month) for always-on service
+- Enable auto-deploy for automatic updates on git push
+- Check logs regularly: Dashboard → Your Service → Logs
+
+🆘 TROUBLESHOOTING:
+- Build fails: Check requirements_production.txt
+- 502 Error: Check start command and logs
+- Static files missing: Run collectstatic
+- Database errors: Check DATABASE_URL and run migrations
