@@ -14,6 +14,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    
+    <!-- PWA Support -->
+    {% include 'pwa_head.html' %}
+    
     <style>
       :root {
         --primary-color: #14b8a6;
@@ -923,5 +927,8 @@
     </script>
     <script> window.chtlConfig = { chatbotId: "8383945963" } </script>
 <script async data-id="8383945963" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    
+    <!-- PWA Install Banner -->
+    {% include 'pwa_banner.html' %}
   </body>
 </html>
