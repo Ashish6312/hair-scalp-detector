@@ -3,7 +3,13 @@ Production settings for deployment on Render
 """
 from .settings import *
 import os
-import dj_database_url
+
+# Try to import dj_database_url if available
+try:
+    import dj_database_url
+    HAS_DJ_DATABASE_URL = True
+except ImportError:
+    HAS_DJ_DATABASE_URL = False
 
 # SECURITY SETTINGS
 DEBUG = False
@@ -44,14 +50,24 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # DATABASE
-# Use PostgreSQL on Render (automatically configured via DATABASE_URL)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+# Use SQLite for simplicity (or PostgreSQL if DATABASE_URL is provided)
+if os.environ.get('DATABASE_URL') and HAS_DJ_DATABASE_URL:
+    # Use PostgreSQL if DATABASE_URL is provided
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    # Use SQLite as fallback
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # STATIC FILES
 STATIC_URL = '/static/'
