@@ -19,8 +19,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-q$p7bwhr1&oiimk3@r59_
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.onrender.com',  # Your Render backend domain
-    '.vercel.app',    # Your Vercel frontend domain
+    'hair-scalp-detector.onrender.com',  # Your actual Render domain
+    '.onrender.com',  # All Render domains
+    '.vercel.app',    # Your Vercel frontend domain (if needed)
 ]
 
 # CORS SETTINGS for Vercel frontend
@@ -45,6 +46,7 @@ CORS_ALLOW_HEADERS = [
 
 # CSRF SETTINGS
 CSRF_TRUSTED_ORIGINS = [
+    'https://hair-scalp-detector.onrender.com',  # Your actual domain
     'https://*.onrender.com',
     'https://*.vercel.app',
 ]
@@ -72,7 +74,14 @@ else:
 # STATIC FILES
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp', 'static')]
+
+# Only include static dirs that exist
+import os as _os
+_static_dir = _os.path.join(BASE_DIR, 'myapp', 'static')
+if _os.path.exists(_static_dir):
+    STATICFILES_DIRS = [_static_dir]
+else:
+    STATICFILES_DIRS = []
 
 # WhiteNoise for serving static files
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
